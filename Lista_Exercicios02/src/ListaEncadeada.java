@@ -1,3 +1,4 @@
+//Lista de exercícios 02 – Estruturas de Dados
 //1. Implemente a classe ListaEncadeada utilizando um arranjo de inteiros para armazenar os elementos da lista.
 //2. Crie um método para criar uma lista vazia.
 //3. Crie um método responsável por inserir um elemento no início da lista.
@@ -37,6 +38,8 @@ public class ListaEncadeada {
             // Insere o novo elemento na posição 0
             elementos[0] = elemento;
             tamanho++; // Aumenta o contador de elementos
+        } else {
+            System.out.println("Lista cheia. Não é possível inserir no início.");
         }
     }
 
@@ -45,6 +48,8 @@ public class ListaEncadeada {
         if (tamanho < elementos.length) { // Verifica se há espaço na lista
             elementos[tamanho] = elemento; // Insere o elemento na última posição disponível
             tamanho++; // Aumenta o contador de elementos
+        } else {
+            System.out.println("Lista cheia. Não é possível inserir no fim.");
         }
     }
 
@@ -59,6 +64,8 @@ public class ListaEncadeada {
             // Insere o elemento na posição desejada
             elementos[posicao] = elemento;
             tamanho++; // Aumenta o contador de elementos
+        } else {
+            System.out.println("Posição inválida ou lista cheia.");
         }
     }
 
@@ -70,6 +77,8 @@ public class ListaEncadeada {
                 elementos[i] = elementos[i + 1];
             }
             tamanho--; // Diminui o contador de elementos
+        } else {
+            System.out.println("Lista vazia. Não é possível remover do início.");
         }
     }
 
@@ -77,6 +86,8 @@ public class ListaEncadeada {
     public void removerFim() {
         if (tamanho > 0) { // Verifica se a lista não está vazia
             tamanho--; // Apenas reduz o tamanho da lista
+        } else {
+            System.out.println("Lista vazia. Não é possível remover do fim.");
         }
     }
 
@@ -88,6 +99,8 @@ public class ListaEncadeada {
                 elementos[i] = elementos[i + 1];
             }
             tamanho--; // Diminui o contador de elementos
+        } else {
+            System.out.println("Posição inválida. Não é possível remover.");
         }
     }
 
@@ -104,11 +117,17 @@ public class ListaEncadeada {
         // Se o elemento foi encontrado, remove-o
         if (posicao != -1) {
             removerPosicaoEspecifica(posicao);
+        } else {
+            System.out.println("Elemento não encontrado na lista.");
         }
     }
 
     // Exibe o conteúdo da lista
     public void exibirConteudo() {
+        if (tamanho == 0) {
+            System.out.println("Lista vazia.");
+            return;
+        }
         for (int i = 0; i < tamanho; i++) {
             System.out.print(elementos[i] + " "); // Exibe cada elemento seguido por um espaço
         }
@@ -132,30 +151,31 @@ public class ListaEncadeada {
         System.out.println("Número de elementos na lista: " + tamanho); // Exibe o tamanho da lista
     }
 
+    // Método principal para testar a classe
     public static void main(String[] args) {
-        ListaEncadeada lista = new ListaEncadeada(10);
+        ListaEncadeada lista = new ListaEncadeada(10); // Cria uma lista com capacidade para 10 elementos
 
         lista.inserirInicio(5);
-        lista.exibirConteudo();
+        lista.exibirConteudo(); // Exibe: 5
 
         lista.inserirFim(7);
-        lista.exibirConteudo();
+        lista.exibirConteudo(); // Exibe: 5 7
 
         lista.inserirPosicaoEspecifica(1, 9);
-        lista.exibirConteudo();
+        lista.exibirConteudo(); // Exibe: 5 9 7
 
         lista.removerInicio();
-        lista.exibirConteudo();
+        lista.exibirConteudo(); // Exibe: 9 7
 
         lista.removerFim();
-        lista.exibirConteudo();
+        lista.exibirConteudo(); // Exibe: 9
 
-        lista.removerElementoEspecifico(5);
-        lista.exibirConteudo();
+        lista.removerElementoEspecifico(5); // Não deve fazer nada, pois 5 não está na lista
+        lista.exibirConteudo(); // Exibe: 9
 
-        lista.pesquisarElementoDescreverPosicao(7);
-        lista.pesquisarElementoDescreverPosicao(9);
+        lista.pesquisarElementoDescreverPosicao(7); // Não deve encontrar
+        lista.pesquisarElementoDescreverPosicao(9); // Deve encontrar
 
-        lista.numeroElementosLista();
+        lista.numeroElementosLista(); // Exibe: 1
     }
 }
