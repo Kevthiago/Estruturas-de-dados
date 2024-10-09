@@ -1,6 +1,4 @@
-package Lista.teste;
-
-import Lista.ListaEncadeadaNo;
+package Lista;
 
 public class ListaEncadeadaTeste {
     public static void main(String[] args) {

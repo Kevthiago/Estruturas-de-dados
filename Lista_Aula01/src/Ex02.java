@@ -18,6 +18,7 @@ public class Ex02 {
 
         int[] vetor1 = new int[100]; // Vetor original de 100 posições
 
+
         // Preencher o vetor e calcular a soma, encontrar o menor valor e suas posições
         System.out.print("Vetor 1: [");
         for (int i = 0; i < vetor1.length; i++) {
